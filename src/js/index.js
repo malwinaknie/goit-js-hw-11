@@ -1,7 +1,7 @@
 import { fetchImages } from "./fetch-photos"
 import { createMarkup } from "./create-photo-card";
 import Notiflix from 'notiflix';
-import simpleLightbox from "simplelightbox";
+import SimpleLightbox from "simplelightbox";
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const form = document.querySelector('.search-form');
@@ -33,7 +33,7 @@ function formOnSearch(e) {
             }
             else {
                 createMarkup(data.hits);
-                simpleLightbox = new simpleLightbox('.gallery a').refresh();
+                simpleLightbox = new SimpleLightbox('.gallery a').refresh();
                 Notiflix.Notify.success(`Hooray! We found ${data.totalHits} images.`)
             }
 
@@ -58,7 +58,7 @@ function formOnSearch(e) {
         fetchImages(query, page, perPage)
         .then(({data}) => {
             createMarkup(data.hits);
-            simpleLightbox = new simpleLightbox('.gallery a').refresh();
+            simpleLightbox = new SimpleLightbox('.gallery a').refresh();
 
             const totalPages = Math.ceil(data.totalHits / perPage);
 
